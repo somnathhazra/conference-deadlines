@@ -1,12 +1,11 @@
 const calendarContainer = document.getElementById("calendar-container");
 
 // Define deadlines for specific dates
-/*
+
 const deadlines = [
     { date: "2025-01-30", conference: "ICML Abstract", link: "https://icml.cc/" },
     { date: "2024-10-01", conference: "ICLR", link: "https://iclr.cc/" },
 ];
-*/
 
 const today = new Date();
 

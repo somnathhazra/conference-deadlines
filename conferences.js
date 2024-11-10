@@ -1,6 +1,5 @@
 // Conference data
 
-/*
 const deadlines = [
     {
         conference: "ICML 2025 Abstract",
@@ -13,8 +12,8 @@ const deadlines = [
         link: "https://iclr.cc/"
     },
 ];
-*/
 
+/*
 const csvURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuC6XDI6ehiL-00t7rlcECkxT2-UYOI87tsUr0_NZzRRRdTZYeJjShbDKodkLC8zYwJ0L4jxY5MZav/pub?output=csv";
 
 // Declare deadlines array globally
@@ -62,3 +61,4 @@ function parseCSV(data) {
 
 // Call the function to load data on page load
 fetchConferenceDataCSV();
+*/

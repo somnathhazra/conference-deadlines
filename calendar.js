@@ -46,7 +46,7 @@ function createMonthCard(year, month, isCurrentMonth) {
     const monthHeader = document.createElement('div');
     monthHeader.className = 'month-header';
     monthHeader.innerHTML = `
-        <span class="month-title">${months[month]} ${year}${isCurrentMonth ? ' (Current)' : ''}</span>
+        <span class="month-title">${months[month]} ${year}$</span>
         ${createCalendarIcon()}
     `;
 

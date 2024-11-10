@@ -11,8 +11,8 @@ const conferences = [
         url: "https://neurips.cc/"
     },
     {
-        name: "ICLR 2024",
-        deadline: "2024-02-15",
+        name: "ICLR 2025",
+        deadline: "2024-10-01",
         url: "https://iclr.cc/"
     },
     {

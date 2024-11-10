@@ -1,28 +1,64 @@
 // Conference data
-const conferences = [
+
+/*
+const deadlines = [
     {
-        name: "ICML 2025",
-        deadline: "2025-01-31",
-        url: "https://icml.cc/"
+        conference: "ICML 2025 Abstract",
+        date: "2025-01-31",
+        link: "https://icml.cc/"
     },
     {
-        name: "NeurIPS 2024",
-        deadline: "2024-01-25",
-        url: "https://neurips.cc/"
+        conference: "ICLR 2025",
+        date: "2024-10-01",
+        link: "https://iclr.cc/"
     },
-    {
-        name: "ICLR 2025",
-        deadline: "2024-10-01",
-        url: "https://iclr.cc/"
-    },
-    {
-        name: "AAAI 2024",
-        deadline: "2024-03-20",
-        url: "https://aaai.org/conference/"
-    },
-    {
-        name: "AAMAS 2024",
-        deadline: "2024-04-10",
-        url: "https://aamas2024-conference.auckland.ac.nz/"
-    }
 ];
+*/
+
+const csvURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuC6XDI6ehiL-00t7rlcECkxT2-UYOI87tsUr0_NZzRRRdTZYeJjShbDKodkLC8zYwJ0L4jxY5MZav/pub?output=csv";
+
+// Declare deadlines array globally
+let deadlines = [];
+
+// Fetch and parse CSV data
+async function fetchConferenceDataCSV() {
+    try {
+        const response = await fetch(csvURL);
+        const data = await response.text();
+        
+        deadlines = parseCSV(data); // Populate the global deadlines array
+    } catch (error) {
+        console.error("Error fetching data from CSV:", error);
+    }
+}
+
+// Parse CSV text to extract only necessary fields
+function parseCSV(data) {
+    const lines = data.split("\n");
+    const headers = lines[0].split(",");
+    
+    const conferenceIndex = headers.findIndex(header => header.trim().toLowerCase() === "conference name");
+    const dateIndex = headers.findIndex(header => header.trim().toLowerCase() === "date");
+    const linkIndex = headers.findIndex(header => header.trim().toLowerCase() === "link");
+    
+    const parsedDeadlines = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const row = lines[i].split(",");
+        
+        if (!row[conferenceIndex] || !row[dateIndex] || !row[linkIndex]) continue;
+        
+        const entry = {
+            conference: row[conferenceIndex].trim(),
+            date: row[dateIndex].trim(),
+            link: row[linkIndex].trim()
+        };
+        
+        parsedDeadlines.push(entry);
+    }
+
+    return parsedDeadlines;
+}
+
+// Call the function to load data on page load
+fetchConferenceDataCSV();

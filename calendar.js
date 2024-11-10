@@ -10,7 +10,8 @@ function getCurrentMonthInfo() {
         startYear: twoMonthsAgo.getFullYear(),
         startMonth: twoMonthsAgo.getMonth(),
         currentYear: now.getFullYear(),
-        currentMonth: now.getMonth()
+        currentMonth: now.getMonth(),
+        currentDay: now.getDate()
     };
 }
 
@@ -20,6 +21,13 @@ function getDaysInMonth(year, month) {
 
 function getFirstDayOfMonth(year, month) {
     return new Date(year, month, 1).getDay();
+}
+
+function isToday(year, month, day) {
+    const today = new Date();
+    return today.getDate() === day && 
+           today.getMonth() === month && 
+           today.getFullYear() === year;
 }
 
 function getConferencesForDate(year, month, day) {
@@ -43,7 +51,6 @@ function closeAllTooltips() {
 }
 
 function handleTooltipClick(event) {
-    // Prevent the click from reaching the document and closing the tooltip
     event.stopPropagation();
 }
 
@@ -83,8 +90,15 @@ function createMonthCard(year, month, isCurrentMonth) {
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCell = document.createElement('div');
         const confs = getConferencesForDate(year, month, day);
+        const isCurrentDay = isToday(year, month, day);
         
-        dayCell.className = `day${confs.length > 0 ? ' has-deadline' : ''}${confs.length > 1 ? ' has-multiple' : ''}`;
+        // Build class list for the day cell
+        const classList = ['day'];
+        if (confs.length > 0) classList.push('has-deadline');
+        if (confs.length > 1) classList.push('has-multiple');
+        if (isCurrentDay) classList.push('today');
+        
+        dayCell.className = classList.join(' ');
         dayCell.textContent = day;
 
         if (confs.length > 0) {
@@ -92,14 +106,20 @@ function createMonthCard(year, month, isCurrentMonth) {
             tooltip.className = 'deadline-tooltip';
             tooltip.addEventListener('click', handleTooltipClick);
             
+            // Create a wrapper for the conference links
+            const linksWrapper = document.createElement('div');
+            linksWrapper.className = 'deadline-links';
+            
             confs.forEach(conf => {
                 const link = document.createElement('a');
                 link.href = conf.url;
                 link.target = '_blank';
                 link.className = 'deadline-link';
                 link.textContent = conf.name;
-                tooltip.appendChild(link);
+                linksWrapper.appendChild(link);
             });
+            
+            tooltip.appendChild(linksWrapper);
 
             if (confs.length > 1) {
                 const count = document.createElement('div');
@@ -113,9 +133,7 @@ function createMonthCard(year, month, isCurrentMonth) {
             // Add click event handler
             dayCell.addEventListener('click', (event) => {
                 event.stopPropagation();
-                // Close any other open tooltips
                 closeAllTooltips();
-                // Toggle the clicked tooltip
                 tooltip.classList.add('active');
             });
         }

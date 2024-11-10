@@ -36,6 +36,17 @@ function createCalendarIcon() {
     </svg>`;
 }
 
+function closeAllTooltips() {
+    document.querySelectorAll('.deadline-tooltip.active').forEach(tooltip => {
+        tooltip.classList.remove('active');
+    });
+}
+
+function handleTooltipClick(event) {
+    // Prevent the click from reaching the document and closing the tooltip
+    event.stopPropagation();
+}
+
 function createMonthCard(year, month, isCurrentMonth) {
     const daysInMonth = getDaysInMonth(year, month);
     const firstDay = getFirstDayOfMonth(year, month);
@@ -79,6 +90,7 @@ function createMonthCard(year, month, isCurrentMonth) {
         if (confs.length > 0) {
             const tooltip = document.createElement('div');
             tooltip.className = 'deadline-tooltip';
+            tooltip.addEventListener('click', handleTooltipClick);
             
             confs.forEach(conf => {
                 const link = document.createElement('a');
@@ -97,6 +109,15 @@ function createMonthCard(year, month, isCurrentMonth) {
             }
 
             dayCell.appendChild(tooltip);
+            
+            // Add click event handler
+            dayCell.addEventListener('click', (event) => {
+                event.stopPropagation();
+                // Close any other open tooltips
+                closeAllTooltips();
+                // Toggle the clicked tooltip
+                tooltip.classList.add('active');
+            });
         }
 
         calendar.appendChild(dayCell);
@@ -124,6 +145,9 @@ function initializeCalendar() {
         grid.appendChild(createMonthCard(year, month, isCurrentMonth));
         month++;
     }
+
+    // Add click event listener to document to close tooltips when clicking outside
+    document.addEventListener('click', closeAllTooltips);
 }
 
 // Initialize the calendar when the DOM is loaded

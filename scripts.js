@@ -63,7 +63,7 @@ function updateCalendarWithDeadlines() {
                 const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
                 // Highlight today's date
-                if (dateString === normalizeDate(today)) {
+                if (normalizeDate(currentDate).getTime() === normalizeDate(today).getTime()) {
                     dayDiv.classList.add("current-date");
                 }
 

@@ -67,8 +67,19 @@ function parseCSV(data) {
 
 // Function to normalize date to YYYY-MM-DD
 function normalizeDate(dateStr) {
+    /*
     const [month, day, year] = dateStr.split("/").map(part => part.padStart(2, '0'));
     console.log(`${year}-${month}-${day}`);
+    */
+
+    const dateObj = new Date(dateStr);
+    
+    // Extract year, month, and day from the Date object
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const day = String(dateObj.getDate()).padStart(2, '0');
+
+    // Format as YYYY-MM-DD
     return `${year}-${month}-${day}`;
 }
 

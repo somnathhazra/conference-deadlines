@@ -9,6 +9,17 @@ const deadlines = [
 ];
 */
 
+function updateCalendarWithDeadlines() {
+    // Ensure deadlines are loaded
+    if (deadlines.length === 0) {
+        console.log("Deadlines data is not yet loaded.");
+        return;
+    }
+}
+
+// Call this after fetchConferenceDataCSV has populated deadlines
+setTimeout(updateCalendarWithDeadlines, 1000);
+
 const today = new Date();
 
 // Function to normalize dates (set time to 00:00:00) for comparison

@@ -68,6 +68,7 @@ function parseCSV(data) {
 // Function to normalize date to YYYY-MM-DD
 function normalizeDate(dateStr) {
     const [month, day, year] = dateStr.split("/").map(part => part.padStart(2, '0'));
+    console.log(`${year}-${month}-${day}`);
     return `${year}-${month}-${day}`;
 }
 

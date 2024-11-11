@@ -18,7 +18,7 @@ function updateCalendarWithDeadlines() {
 }
 
 // Call this after fetchConferenceDataCSV has populated deadlines
-setTimeout(updateCalendarWithDeadlines, 1000);
+setTimeout(updateCalendarWithDeadlines, 5000);
 
 const today = new Date();
 

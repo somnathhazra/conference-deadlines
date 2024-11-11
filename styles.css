@@ -23,6 +23,41 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
 }
 
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1em;
+    color: #333;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border-radius: 2px;
+}
+
+/* Legend color blocks */
+.current-date-color {
+    background-color: blue;
+}
+
+.past-deadline-color {
+    background-color: red;
+}
+
+.future-deadline-color {
+    background-color: green;
+}
+
 /* Adjust to 2 months per row for medium screens (tablets) */
 @media (max-width: 1024px) {
     #calendar-container {

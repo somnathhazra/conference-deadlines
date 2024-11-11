@@ -126,7 +126,7 @@ function updateCalendarWithDeadlines() {
 }
 
 // Call this after fetchConferenceDataCSV has populated deadlines
-setTimeout(updateCalendarWithDeadlines, 10000);
+setTimeout(updateCalendarWithDeadlines, 5000);
 
 // Function to normalize dates (set time to 00:00:00) for comparison
 function normalizeDate(date) {

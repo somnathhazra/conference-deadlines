@@ -1,6 +1,6 @@
 # Conference Deadlines Calendar
 
-A dynamic, interactive calendar displaying submission deadlines for major conferences. The calendar shows a 12-month view starting from two months before the current date, with clear visual indicators for submission deadlines.
+A dynamic, interactive calendar displaying submission deadlines for major conferences. The calendar shows a 12-month view starting from two months before the current date, with clear visual indicators for submission deadlines. [Webpage](https://somnathhazra.github.io/conference-deadlines/)
 
 ## Features
 

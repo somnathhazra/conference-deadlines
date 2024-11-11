@@ -27,7 +27,7 @@ async function fetchConferenceDataCSV() {
         const data = await response.text();
 
         deadlines = parseCSV(data); // Populate the global deadlines array
-        console.log(deadlines);
+        console.log(parseCSV(data));
     } catch (error) {
         console.error("Error fetching data from CSV:", error);
     }

@@ -32,6 +32,16 @@ async function fetchConferenceDataCSV() {
     }
 }
 
+
+// Function to normalize date to YYYY-MM-DD
+function normDate(dateStr) {
+    const [month, day, year] = dateStr.split("/").map(part => part.padStart(2, '0'));
+    console.log(`${year}-${month}-${day}`);
+
+    // Format as YYYY-MM-DD
+    return `${year}-${month}-${day}`;
+}
+
 // Parse CSV text to extract only necessary fields
 function parseCSV(data) {
     const lines = data.split("\n");
@@ -64,15 +74,6 @@ function parseCSV(data) {
     }
 
     return parsedDeadlines;
-}
-
-// Function to normalize date to YYYY-MM-DD
-function normDate(dateStr) {
-    const [month, day, year] = dateStr.split("/").map(part => part.padStart(2, '0'));
-    console.log(`${year}-${month}-${day}`);
-
-    // Format as YYYY-MM-DD
-    return `${year}-${month}-${day}`;
 }
 
 // Call the function to load data on page load

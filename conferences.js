@@ -36,7 +36,7 @@ async function fetchConferenceDataCSV() {
 // Function to normalize date to YYYY-MM-DD
 function normDate(dateStr) {
     const [month, day, year] = dateStr.split("/").map(part => part.padStart(2, '0'));
-    console.log(`${year}-${month}-${day}`);
+    // console.log(`${year}-${month}-${day}`);
 
     // Format as YYYY-MM-DD
     return `${year}-${month}-${day}`;
@@ -61,8 +61,8 @@ function parseCSV(data) {
         // Normalize date format to YYYY-MM-DD
         const originalDate = row[dateIndex].trim();
         const normalizedDate = normDate(originalDate);
-        console.log(originalDate);
-        console.log(normalizedDate);
+        // console.log(originalDate);
+        // console.log(normalizedDate);
 
         const entry = {
             conference: row[conferenceIndex].trim(),

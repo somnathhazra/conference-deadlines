@@ -19,6 +19,9 @@ function updateCalendarWithDeadlines() {
 // Call this after fetchConferenceDataCSV has populated deadlines
 setTimeout(updateCalendarWithDeadlines, 10000);
 
+console.log("Got data.");
+console.log(deadlines);
+
 const today = new Date();
 
 // Function to normalize dates (set time to 00:00:00) for comparison

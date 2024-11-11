@@ -17,7 +17,7 @@ function updateCalendarWithDeadlines() {
 }
 
 // Call this after fetchConferenceDataCSV has populated deadlines
-setTimeout(updateCalendarWithDeadlines, 1000);
+setTimeout(updateCalendarWithDeadlines, 10000);
 
 console.log(deadlines);
 

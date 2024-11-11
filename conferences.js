@@ -51,6 +51,7 @@ function parseCSV(data) {
         // Normalize date format to YYYY-MM-DD
         const originalDate = row[dateIndex].trim();
         const normalizedDate = normalizeDate(originalDate);
+        console.log(originalDate);
         console.log(normalizedDate);
 
         const entry = {

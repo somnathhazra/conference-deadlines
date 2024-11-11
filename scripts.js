@@ -11,7 +11,7 @@ const deadlines = [
 
 function updateCalendarWithDeadlines() {
     // Ensure deadlines are loaded
-    if (deadlines.length === 0) {
+    while (deadlines.length === 0) {
         console.log("Deadlines data is not yet loaded.");
         return;
     }

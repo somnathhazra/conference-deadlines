@@ -25,7 +25,7 @@ Conference data is stored in the `deadlines` state array in `conferences.js`. Co
 }
 ```
 
-Plesae use [this form](https://forms.gle/vT3YXBpXLiiyV6vT9) to add a new entry. That you for your contribution!!
+Please use [this form](https://forms.gle/vT3YXBpXLiiyV6vT9) to add a new entry. That you for your contribution!!
 
 ## License
 

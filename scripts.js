@@ -136,7 +136,7 @@ function updateCalendarWithDeadlines() {
         // Display each conference as a list item
         conferencesInRange.forEach(conference => {
             const listItem = document.createElement("li");
-            listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference}</a>`;
+            listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference} (Date: ${conference.date})</a>`;
             conferenceListContainer.appendChild(listItem);
         });
     }

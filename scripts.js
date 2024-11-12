@@ -115,8 +115,6 @@ function updateCalendarWithDeadlines() {
             calendarContainer.appendChild(monthDiv);
         }
 
-        updateConferenceList();
-
         // Hide the tooltip if clicking outside a day with a deadline
         document.addEventListener("click", (event) => {
             if (currentTooltip && !event.target.closest(".day.deadline")) {

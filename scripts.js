@@ -127,7 +127,7 @@ function updateCalendarWithDeadlines() {
         const conferencesInRange = deadlines.filter(deadline => {
             const deadlineDate = new Date(deadline.date);
             return deadlineDate >= displayStartDate && deadlineDate <= displayEndDate;
-        });
+        }).sort((a, b) => new Date(a.date) - new Date(b.date));
 
         // Get the container for the conference list
         const conferenceListContainer = document.getElementById("conferenceList");

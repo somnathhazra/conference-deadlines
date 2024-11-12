@@ -33,6 +33,7 @@ function updateCalendarWithDeadlines() {
 
             const monthDiv = document.createElement("div");
             monthDiv.className = "month";
+            monthDiv.id = `month-${year}-${String(month + 1).padStart(2, '0')}`; // Add unique ID to each month
 
             const header = document.createElement("h3");
             header.innerText = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
@@ -136,7 +137,20 @@ function updateCalendarWithDeadlines() {
         // Display each conference as a list item
         conferencesInRange.forEach(conference => {
             const listItem = document.createElement("li");
-            listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference} (Date: ${conference.date})</a>`;
+            // listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference} (Date: ${conference.date})</a>`;
+            listItem.innerHTML = `${conference.conference} (Date: ${conference.date})`;
+
+            // Add click event to scroll to the month
+            listItem.addEventListener("click", () => {
+                const deadlineDate = new Date(d.date);
+                const targetId = `month-${deadlineDate.getFullYear()}-${String(deadlineDate.getMonth() + 1).padStart(2, '0')}`;
+                const targetMonth = document.getElementById(targetId);
+                
+                if (targetMonth) {
+                    targetMonth.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+            
             conferenceListContainer.appendChild(listItem);
         });
     }

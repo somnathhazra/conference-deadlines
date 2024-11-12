@@ -124,34 +124,28 @@ function updateCalendarWithDeadlines() {
                 currentTooltip = null;
             }
         });
+
+        // Filter deadlines that fall within the display range
+        const conferencesInRange = deadlines.filter(deadline => {
+            const deadlineDate = new Date(deadline.date);
+            return deadlineDate >= displayStartDate && deadlineDate <= displayEndDate;
+        });
+
+        // Get the container for the conference list
+        const conferenceListContainer = document.getElementById("conferenceList");
+        conferenceListContainer.innerHTML = ""; // Clear previous content
+
+        // Display each conference as a list item
+        conferencesInRange.forEach(conference => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference}</a>`;
+            conferenceListContainer.appendChild(listItem);
+        });
     }
 }
 
 // Call this after fetchConferenceDataCSV has populated deadlines
 setTimeout(updateCalendarWithDeadlines, 5000);
-
-function updateConferenceList() {
-    // Set up date range limits from the calendar display range
-    const displayStartDate = new Date(today.getFullYear(), today.getMonth() - 2, 1);
-    const displayEndDate = new Date(displayStartDate.getFullYear(), displayStartDate.getMonth() + 12, 0);
-
-    // Filter deadlines that fall within the display range
-    const conferencesInRange = deadlines.filter(deadline => {
-        const deadlineDate = new Date(deadline.date);
-        return deadlineDate >= displayStartDate && deadlineDate <= displayEndDate;
-    });
-
-    // Get the container for the conference list
-    const conferenceListContainer = document.getElementById("conferenceList");
-    conferenceListContainer.innerHTML = ""; // Clear previous content
-
-    // Display each conference as a list item
-    conferencesInRange.forEach(conference => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference}</a>`;
-        conferenceListContainer.appendChild(listItem);
-    });
-}
 
 // Function to normalize dates (set time to 00:00:00) for comparison
 function normalizeDate(date) {

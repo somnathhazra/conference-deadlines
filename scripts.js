@@ -137,8 +137,8 @@ function updateCalendarWithDeadlines() {
         // Display each conference as a list item
         conferencesInRange.forEach(conference => {
             const listItem = document.createElement("li");
-            // listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference} (Date: ${conference.date})</a>`;
-            listItem.innerHTML = `${conference.conference} (Date: ${conference.date})`;
+            // listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference} (Date:${conference.date})</a>`;
+            listItem.innerHTML = `${conference.conference} (Date:${conference.date})`;
 
             // Add click event to scroll to the month
             listItem.addEventListener("click", () => {

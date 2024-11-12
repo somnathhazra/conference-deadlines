@@ -142,7 +142,7 @@ function updateCalendarWithDeadlines() {
 
             // Add click event to scroll to the month
             listItem.addEventListener("click", () => {
-                const deadlineDate = new Date(d.date);
+                const deadlineDate = new Date(conference.date);
                 const targetId = `month-${deadlineDate.getFullYear()}-${String(deadlineDate.getMonth() + 1).padStart(2, '0')}`;
                 const targetMonth = document.getElementById(targetId);
                 

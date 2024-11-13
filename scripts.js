@@ -157,7 +157,13 @@ function updateCalendarWithDeadlines() {
 }
 
 // Call this after fetchConferenceDataCSV has populated deadlines
-setTimeout(updateCalendarWithDeadlines, 5000);
+// setTimeout(updateCalendarWithDeadlines, 5000);
+updateConferenceList = async () => {
+    // Load calendar and deadlines data, then render
+    await fetchConferenceDataCSV();
+    updateCalendarWithDeadlines(); // Update conference list after calendar is displayed
+};
+updateConferenceList();
 
 // Function to normalize dates (set time to 00:00:00) for comparison
 function normalizeDate(date) {

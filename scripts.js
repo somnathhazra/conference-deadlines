@@ -140,6 +140,14 @@ function updateCalendarWithDeadlines() {
             // listItem.innerHTML = `<a href="${conference.link}" target="_blank">${conference.conference} (Date:${conference.date})</a>`;
             listItem.innerHTML = `${conference.conference} (Date:${conference.date})`;
 
+            // Check if the deadline is in the past and apply the appropriate style
+            const deadlineDate = new Date(conference.date);
+            if (deadlineDate < today) {
+                listItem.classList.add("past-deadline");  // Red for past deadlines
+            } else {
+                listItem.classList.add("future-deadline");  // Green for upcoming deadlines
+            }
+
             // Add click event to scroll to the month
             listItem.addEventListener("click", () => {
                 const deadlineDate = new Date(conference.date);

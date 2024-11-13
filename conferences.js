@@ -77,4 +77,4 @@ function parseCSV(data) {
 }
 
 // Call the function to load data on page load
-fetchConferenceDataCSV();
+// fetchConferenceDataCSV();

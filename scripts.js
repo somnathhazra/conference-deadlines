@@ -28,7 +28,7 @@ function updateCalendarWithDeadlines() {
         let currentTooltip = null;
 
         for (let i = 0; i < 12; i++) {
-            let month = (startMonth + i) % 12;
+            let month = (12 + (startMonth + i)) % 12; // (startMonth + i) % 12;
             let year = startYear + Math.floor((startMonth + i) / 12);
 
             const monthDiv = document.createElement("div");
